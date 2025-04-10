@@ -1,4 +1,4 @@
-package routes
+package router
 
 import (
 	"github.com/MarcelloBB/gin-boilerplate/handler"

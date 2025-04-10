@@ -1,15 +1,18 @@
 package router
 
 import (
-	"github.com/MarcelloBB/gin-boilerplate/routes"
+	"fmt"
+
+	"github.com/MarcelloBB/gin-boilerplate/config"
 	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() *gin.Engine {
-	r := gin.Default()
-	routes.RegisterRoutes(r)
+	apiPort := fmt.Sprintf("%d", config.LoadConfigIni("server", "port", 8080).(int))
 
-	r.Run()
+	r := gin.Default()
+	RegisterRoutes(r)
+	r.Run(apiPort)
 
 	return r
 }
