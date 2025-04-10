@@ -1,15 +1,20 @@
 package usecase
 
-import "github.com/MarcelloBB/gin-boilerplate/model"
+import (
+	"github.com/MarcelloBB/gin-boilerplate/model"
+	"github.com/MarcelloBB/gin-boilerplate/repository"
+)
 
 type UserUseCase struct {
-	// UserRepository repository.UserRepository
+	repository repository.UserRepository
 }
 
-func NewUserUseCase() UserUseCase {
-	return UserUseCase{}
+func NewUserUseCase(repo repository.UserRepository) UserUseCase {
+	return UserUseCase{
+		repository: repo,
+	}
 }
 
 func (p *UserUseCase) GetUsers() ([]model.User, error) {
-	return []model.User{}, nil
+	return p.repository.GetUsers()
 }

@@ -3,7 +3,6 @@ package controller
 import (
 	"net/http"
 
-	"github.com/MarcelloBB/gin-boilerplate/model"
 	"github.com/MarcelloBB/gin-boilerplate/usecase"
 	"github.com/gin-gonic/gin"
 )
@@ -19,11 +18,9 @@ func NewUserController(usecase usecase.UserUseCase) UserController {
 }
 
 func (uc *UserController) GetUsers(c *gin.Context) {
-	users := []model.User{
-		{
-			ID:       1,
-			Username: "User 1",
-		},
+	users, err := uc.userUseCase.GetUsers()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch users"})
 	}
 	c.JSON(http.StatusOK, users)
 }

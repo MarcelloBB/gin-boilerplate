@@ -12,10 +12,11 @@ import (
 func RegisterRoutes(r *gin.Engine, dbConnection *sql.DB) {
 	// Initialize repository
 	ProductRepository := repository.NewProductRepository(dbConnection)
+	UserRepository := repository.NewUserRepository(dbConnection)
 
 	// Initialize use cases
 	ProductUseCase := usecase.NewProductUseCase(ProductRepository)
-	UserUseCase := usecase.NewUserUseCase()
+	UserUseCase := usecase.NewUserUseCase(UserRepository)
 
 	// Initialize controllers
 	ProductController := controller.NewProductController(ProductUseCase)
