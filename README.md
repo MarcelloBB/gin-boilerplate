@@ -17,28 +17,44 @@ Before starting, make sure you have the following installed:
 ## 🏗️ Project Structure
 ```text
 gin-boilerplate/
-├── config/                     # Configuration logic (e.g., loading .ini files)
+├── cmd/
+│   └── main.go                     # Application entry point
 │
-├── config-file.ini            # Main config file
-├── config-file.example.ini    # Example config for reference
+├── config/
+│   └── config.go                   # Loads and parses the .ini config file
 │
-├── docker-compose.yml         # Docker Compose configuration
+├── config-file.ini                # Main config file (e.g., port, env)
+├── config-file.example.ini        # Example config file for reference
 │
-├── .git/                      # Git metadata
-├── .gitignore                 # Files and folders to ignore in Git
+├── controller/
+│   ├── product_controller.go      # HTTP handlers for product routes
+│   └── user_controller.go         # HTTP handlers for user routes
 │
-├── go.mod                     # Go modules (project dependencies)
-├── go.sum                     # Dependency checksums
+├── db/
+│   └── conn.go                    # Database connection and initialization
 │
-├── handler/                   # Handler functions for each domain
-│   ├── user.go                # User-related request handlers
-│   └── product.go             # Product-related request handlers
+├── docker-compose.yml             # Docker services setup (e.g., PostgreSQL)
 │
-├── main.go                    # Application entry point
+├── go.mod                         # Go module definition
+├── go.sum                         # Checksums for module dependencies
 │
-├── router/                    # Routing setup
-│   ├── api.go                 # API groupings and subroutes
-│   └── routes.go              # Base router and middleware config
+├── model/
+│   ├── product.go                 # Product domain model definition
+│   └── user.go                    # User domain model definition
+│
+├── README.md                      # Project documentation
+│
+├── repository/
+│   └── product_repository.go      # Repository layer for product persistence
+│
+├── router/
+│   ├── router.go                  # Gin engine setup with middleware
+│   └── routes.go                  # Route groupings and route registration
+│
+└── usecase/
+    ├── product_usecase.go         # Business logic for products
+    └── user_usecase.go            # Business logic for users
+
 ```
 ---
 
@@ -89,9 +105,10 @@ create table product (
 	id SERIAL primary key,
 	name varchar(2000),
 	price numeric(10, 2)
+	quantity int
 );
 
 select * from product p
 
-insert into product (name, price) values ('Product 1', 100)
+insert into product (name, price) values ('Product 1', 100, 10)
 ```
