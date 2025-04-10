@@ -81,3 +81,17 @@ Configure the database by inserting your credentials into compose:
 - User
 - Password
 - Database
+
+### 3. Setting up a demo database
+If you want to test the model and API, run the script:
+```sql
+create table product (
+	id SERIAL primary key,
+	name varchar(2000),
+	price numeric(10, 2)
+);
+
+select * from product p
+
+insert into product (name, price) values ('Product 1', 100)
+```
