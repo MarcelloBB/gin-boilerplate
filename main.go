@@ -1,8 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/MarcelloBB/gin-boilerplate/router"
 
 func main() {
-    fmt.Println("Hello, Go!")
+	router.InitRouter()
 }
-
