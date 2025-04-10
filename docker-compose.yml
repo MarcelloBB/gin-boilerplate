@@ -1,14 +1,12 @@
 version: "3.9"
 
 services:
-  # go-app:
-  #   container_name: go-app
-  #   image: go-api-tutorial
-  #   build: .
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - go_db
+  redis:
+    image: redis:7.0
+    container_name: redis
+    ports:
+      - "6379:6379"
+
   go_db:
     container_name: go_db
     image: postgres:12
