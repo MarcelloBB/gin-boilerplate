@@ -1,6 +1,7 @@
-# 🧪 Gin Boilerplate
+# 🧪 Gin boilerplate
 
-This is a simple Go project using [Gin](https://github.com/gin-gonic/gin) as the web framework. The project includes a basic folder structure, route organization, handlers, and Docker support with a PostgreSQL container.
+Go API project using [Gin](https://github.com/gin-gonic/gin) as the main framework.
+- Includes support to **Redis** and **Postgres**
 
 ---
 
@@ -8,7 +9,7 @@ This is a simple Go project using [Gin](https://github.com/gin-gonic/gin) as the
 
 Before starting, make sure you have the following installed:
 
-- [Go](https://golang.org/doc/install) (recommended: 1.20+)
+- [Go](https://golang.org/doc/install)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
@@ -32,6 +33,7 @@ gin-boilerplate/
 │
 ├── db/
 │   └── conn.go                   # Manages PostgreSQL database connection
+│   └── redis.go                  # Manages Redis connection
 │
 ├── docker-compose.yml            # Docker setup for services like PostgreSQL
 │
@@ -81,15 +83,30 @@ The application uses a config file named config-file.ini. Base example:
 
 ```bash
 [server]
-port=8080
+port = 8081
+
+[db]
+host     = 192.168.3.4
+port     = 5432
+user     = postgres
+password = 1234
+database = postgres
+name     = postgres
+
+[redis]
+host       = localhost:6379
+db         = 0
+password   = 
+expiration = 10
+
 ```
 
 ## 🐳 Running with Docker Compose
-Currently, the docker-compose.yml only starts a PostgreSQL container. You can extend it later to include the Go application container.
+Currently, the docker-compose.yml starts PostgreSQL and Redis container.
 
 ### 1. Start the services
 ```bash
-docker-compose up -d go_db
+docker-compose up
 ```
 ### 2. PostgreSQL access
 Configure the database by inserting your credentials into compose:
@@ -99,7 +116,14 @@ Configure the database by inserting your credentials into compose:
 - Password
 - Database
 
-### 3. Setting up a demo database
+### 3. Redis access
+Configure the database by inserting your credentials into compose:
+- Host
+- Db
+- Password
+- Expiration (in minutes)
+
+### 4. Setting up a demo database
 If you want to test the model and API, run the script:
 ```sql
 create table product (
