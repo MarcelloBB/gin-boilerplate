@@ -18,42 +18,43 @@ Before starting, make sure you have the following installed:
 ```text
 gin-boilerplate/
 ├── cmd/
-│   └── main.go                     # Application entry point
+│   └── main.go                    # Entry point of the application, initializes the server
 │
 ├── config/
-│   └── config.go                   # Loads and parses the .ini config file
+│   └── config.go                  # Loads and parses the .ini configuration file
 │
-├── config-file.ini                # Main config file (e.g., port, env)
-├── config-file.example.ini        # Example config file for reference
+├── config-file.ini               # Configuration file used by the app (e.g., port, DB)
+├── config-file.example.ini       # Example configuration to help set up new environments
 │
 ├── controller/
-│   ├── product_controller.go      # HTTP handlers for product routes
-│   └── user_controller.go         # HTTP handlers for user routes
+│   ├── product_controller.go     # Handles HTTP requests related to products
+│   └── user_controller.go        # Handles HTTP requests related to users
 │
 ├── db/
-│   └── conn.go                    # Database connection and initialization
+│   └── conn.go                   # Manages PostgreSQL database connection
 │
-├── docker-compose.yml             # Docker services setup (e.g., PostgreSQL)
+├── docker-compose.yml            # Docker setup for services like PostgreSQL
 │
-├── go.mod                         # Go module definition
-├── go.sum                         # Checksums for module dependencies
+├── go.mod                        # Declares the Go module and its dependencies
+├── go.sum                        # Verifies integrity of Go module dependencies
 │
 ├── model/
-│   ├── product.go                 # Product domain model definition
-│   └── user.go                    # User domain model definition
+│   ├── product.go                # Structs and types related to products
+│   └── user.go                   # Structs and types related to users
 │
-├── README.md                      # Project documentation
+├── README.md                     # Project documentation and usage instructions
 │
 ├── repository/
-│   └── product_repository.go      # Repository layer for product persistence
+│   ├── product_repository.go     # Database operations for products
+│   └── user_repository.go        # Database operations for users
 │
 ├── router/
-│   ├── router.go                  # Gin engine setup with middleware
-│   └── routes.go                  # Route groupings and route registration
+│   ├── api.go                    # Initializes and returns the Gin router
+│   └── routes.go                 # Declares all route groups and endpoints
 │
 └── usecase/
-    ├── product_usecase.go         # Business logic for products
-    └── user_usecase.go            # Business logic for users
+    ├── product_usecase.go        # Business logic and orchestration for products
+    └── user_usecase.go           # Business logic and orchestration for users
 
 ```
 ---
