@@ -4,18 +4,17 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/MarcelloBB/gin-boilerplate/config"
 	_ "github.com/lib/pq"
 )
 
-const (
-	host   = "192.168.3.4"
-	port   = 5432
-	user   = "postgres"
-	pwd    = "1234"
-	dbname = "postgres"
-)
-
 func ConnectDB() (*sql.DB, error) {
+	host := config.LoadConfigIni("db", "host", "localhost").(string)
+	port := config.LoadConfigIni("db", "port", 5432).(int)
+	dbname := config.LoadConfigIni("db", "name", "postgres").(string)
+	user := config.LoadConfigIni("db", "user", "postgres").(string)
+	pwd := config.LoadConfigIni("db", "password", "1234").(string)
+
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		host, port, user, pwd, dbname)
