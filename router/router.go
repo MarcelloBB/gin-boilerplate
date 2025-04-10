@@ -8,7 +8,7 @@ import (
 )
 
 func InitRouter() *gin.Engine {
-	apiPort := fmt.Sprintf("%d", config.LoadConfigIni("server", "port", 8080).(int))
+	apiPort := fmt.Sprintf(":%d", config.LoadConfigIni("server", "port", 8080).(int))
 
 	r := gin.Default()
 	RegisterRoutes(r)

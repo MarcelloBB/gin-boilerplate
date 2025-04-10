@@ -1,0 +1,40 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Output of the go coverage tool
+*.coverprofile
+
+# Dependency directories (Go modules)
+vendor/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Config files
+.env
+.env.*
+*.ini
+config.json
+config.yaml
+*.local.json
+*.local.yaml
+*.secret.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Go build cache (opcional, geralmente fora do projeto)
+**/go.sum
