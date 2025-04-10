@@ -1,20 +1,29 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 
-	"github.com/MarcelloBB/gin-boilerplate/model"
+	"github.com/MarcelloBB/gin-boilerplate/usecase"
 	"github.com/gin-gonic/gin"
 )
 
-func GetProducts(c *gin.Context) {
-	products := []model.Product{
-		{
-			ID:       1,
-			Name:     "Product 1",
-			Price:    10.99,
-			Quantity: 5,
-		},
+type ProductController struct {
+	productUseCase usecase.ProductUseCase
+}
+
+func NewProductController(usecase usecase.ProductUseCase) ProductController {
+	return ProductController{
+		productUseCase: usecase,
 	}
+}
+
+func (pc *ProductController) GetProducts(c *gin.Context) {
+	products, err := pc.productUseCase.GetProducts()
+	if err != nil {
+		fmt.Println("Error fetching products:", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch products"})
+	}
+
 	c.JSON(http.StatusOK, products)
 }

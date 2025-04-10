@@ -26,6 +26,7 @@ vendor/
 .env
 .env.*
 *.ini
+config-file.ini
 config.json
 config.yaml
 *.local.json
