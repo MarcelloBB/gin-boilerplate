@@ -3,7 +3,7 @@ package model
 // swagger:model
 type User struct {
 	// example: 1
-	ID int `json:"id"`
+	ID int `gorm:"primaryKey;autoIncrement json:"id"`
 	// example: johndoe
 	Username string `json:"username"`
 	// example: foo@bar.com

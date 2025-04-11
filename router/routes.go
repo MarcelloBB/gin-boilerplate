@@ -1,8 +1,6 @@
 package router
 
 import (
-	"database/sql"
-
 	"github.com/MarcelloBB/gin-boilerplate/controller"
 	"github.com/MarcelloBB/gin-boilerplate/docs"
 	"github.com/MarcelloBB/gin-boilerplate/repository"
@@ -10,9 +8,10 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"gorm.io/gorm"
 )
 
-func RegisterRoutes(r *gin.Engine, dbConnection *sql.DB) {
+func RegisterRoutes(r *gin.Engine, dbConnection *gorm.DB) {
 	// Initialize repository
 	ProductRepository := repository.NewProductRepository(dbConnection)
 	UserRepository := repository.NewUserRepository(dbConnection)

@@ -1,42 +1,29 @@
 package repository
 
 import (
-	"database/sql"
 	"fmt"
 
 	"github.com/MarcelloBB/gin-boilerplate/model"
+	"gorm.io/gorm"
 )
 
 type UserRepository struct {
-	connection *sql.DB
+	connection *gorm.DB
 }
 
-func NewUserRepository(db *sql.DB) UserRepository {
+func NewUserRepository(db *gorm.DB) UserRepository {
 	return UserRepository{
 		connection: db,
 	}
 }
 
 func (p *UserRepository) GetUsers() ([]model.User, error) {
-	query := "SELECT id, username, email FROM userr"
-	rows, err := p.connection.Query(query)
+	users := []model.User{}
+	err := p.connection.Find(&users).Error
 	if err != nil {
 		fmt.Println("Error executing query:", err)
 		return []model.User{}, err
 	}
 
-	var userList []model.User
-	var userObj model.User
-
-	for rows.Next() {
-		err := rows.Scan(&userObj.ID, &userObj.Username, &userObj.Email)
-		if err != nil {
-			return []model.User{}, err
-		}
-		userList = append(userList, userObj)
-	}
-
-	defer rows.Close()
-
-	return userList, nil
+	return users, nil
 }
