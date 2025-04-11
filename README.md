@@ -1,7 +1,16 @@
 # 🧪 Gin boilerplate
 
 Go API project using [Gin](https://github.com/gin-gonic/gin) as the main framework.
-- Includes support to **Redis** and **Postgres**
+
+🧱 Clean Architecture – Clear separation of layers: model, usecase, repository, controller, and router.
+
+🐘 PostgreSQL – Relational database running via Docker.
+
+🧠 Redis – Data caching with expiration support and performance improvement.
+
+📦 Makefile – Simplified commands for build, run, and test.
+
+📚 Swagger – Automatic API routes documentation.
 
 ---
 
@@ -61,20 +70,38 @@ gin-boilerplate/
 ```
 ---
 
-## 🛠️ Running Locally (without Docker)
+## 🛠️ Running
 
 ### 1. Clone the project
 
 ```bash
-git clone https://github.com/your-username/your-project.git
-cd your-project
+git clone https://github.com/MarcelloBB/gin-boilerplate.git
+cd gin-boilerplate
 ```
 
-### 2. Run
+### 2. 📦 Run with Go
 ```bash
 go mod tidy
 go run main.go
 ```
+
+### 3. 🛠️ Running with Makefile
+To simplify common development tasks, you can use the provided Makefile:
+
+```bash
+# Run the application with Swagger docs generation
+make run
+
+# Build the application binary
+make build
+
+# Generate Swagger documentation only
+make docs
+
+# Remove the generated binary and Swagger docs
+make clean
+```
+ℹ️ These commands assume you have swag (from github.com/swaggo/swag/cmd/swag) installed.
 
 The application should be running at: http://localhost:8080
 
