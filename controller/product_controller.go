@@ -18,6 +18,14 @@ func NewProductController(usecase usecase.ProductUseCase) ProductController {
 	}
 }
 
+// GetProducts godoc
+// @Summary      List products
+// @Description  Returns a list of products
+// @Tags         product
+// @Produce      json
+// @Success      200  {array}   model.Product
+// @Failure      500  {object}  map[string]string
+// @Router       /product [get]
 func (pc *ProductController) GetProducts(c *gin.Context) {
 	products, err := pc.productUseCase.GetProducts()
 	if err != nil {

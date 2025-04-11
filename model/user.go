@@ -1,7 +1,11 @@
 package model
 
+// swagger:model
 type User struct {
-	ID       int    `json:"id"`
+	// example: 1
+	ID int `json:"id"`
+	// example: johndoe
 	Username string `json:"username"`
-	Email    string `json:"email"`
+	// example: foo@bar.com
+	Email string `json:"email"`
 }

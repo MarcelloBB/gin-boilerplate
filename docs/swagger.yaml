@@ -1,4 +1,74 @@
+definitions:
+  model.Product:
+    properties:
+      id:
+        description: 'example: 1'
+        type: integer
+      name:
+        description: 'example: "product_1"'
+        type: string
+      price:
+        description: 'example: 50.25'
+        type: number
+      quantity:
+        description: 'example: 10'
+        type: integer
+    type: object
+  model.User:
+    properties:
+      email:
+        description: 'example: foo@bar.com'
+        type: string
+      id:
+        description: 'example: 1'
+        type: integer
+      username:
+        description: 'example: johndoe'
+        type: string
+    type: object
 info:
   contact: {}
-paths: {}
+paths:
+  /product:
+    get:
+      description: Returns a list of products
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Product'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: List products
+      tags:
+      - product
+  /user:
+    get:
+      description: Returns a list of users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.User'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: List users
+      tags:
+      - user
 swagger: "2.0"

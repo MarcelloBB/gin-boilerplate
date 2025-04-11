@@ -1,8 +1,12 @@
 package model
 
 type Product struct {
-	ID       int     `json:"id"`
-	Name     string  `json:"name"`
-	Price    float64 `json:"price"`
-	Quantity *int    `json:"quantity"`
+	// example: 1
+	ID int `json:"id"`
+	// example: "product_1"
+	Name string `json:"name"`
+	// example: 50.25
+	Price float64 `json:"price"`
+	// example: 10
+	Quantity *int `json:"quantity"`
 }

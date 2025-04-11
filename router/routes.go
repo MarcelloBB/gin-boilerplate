@@ -28,10 +28,11 @@ func RegisterRoutes(r *gin.Engine, dbConnection *sql.DB) {
 	basePath := "/api/v1"
 	docs.SwaggerInfo.BasePath = basePath
 
+	// @BasePath /api/v1
 	api := r.Group(basePath)
 	{
-		api.GET("/users", UserController.GetUsers)
-		api.GET("/products", ProductController.GetProducts)
+		api.GET("/user", UserController.GetUsers)
+		api.GET("/product", ProductController.GetProducts)
 	}
 
 	// Swagger docs
