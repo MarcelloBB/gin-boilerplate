@@ -26,46 +26,40 @@ Before starting, make sure you have the following installed:
 
 ## 🏗️ Project Structure
 ```text
-gin-boilerplate/
-├── cmd/
-│   └── main.go                    # Entry point of the application, initializes the server
-│
-├── config/
-│   └── config.go                  # Loads and parses the .ini configuration file
-│
-├── config-file.ini               # Configuration file used by the app (e.g., port, DB)
-├── config-file.example.ini       # Example configuration to help set up new environments
-│
-├── controller/
-│   ├── product_controller.go     # Handles HTTP requests related to products
-│   └── user_controller.go        # Handles HTTP requests related to users
-│
-├── db/
-│   └── conn.go                   # Manages PostgreSQL database connection
-│   └── redis.go                  # Manages Redis connection
-│
-├── docker-compose.yml            # Docker setup for services like PostgreSQL
-│
-├── go.mod                        # Declares the Go module and its dependencies
-├── go.sum                        # Verifies integrity of Go module dependencies
-│
-├── model/
-│   ├── product.go                # Structs and types related to products
-│   └── user.go                   # Structs and types related to users
-│
-├── README.md                     # Project documentation and usage instructions
-│
-├── repository/
-│   ├── product_repository.go     # Database operations for products
-│   └── user_repository.go        # Database operations for users
-│
-├── router/
-│   ├── api.go                    # Initializes and returns the Gin router
-│   └── routes.go                 # Declares all route groups and endpoints
-│
-└── usecase/
-    ├── product_usecase.go        # Business logic and orchestration for products
-    └── user_usecase.go           # Business logic and orchestration for users
+gin-boilerplate
+├── cmd
+│   └── main.go                   # Entry point of the application
+├── config
+│   └── config.go                 # Loads and parses the .ini configuration file
+├── config-file.example.ini       # Example configuration file
+├── config-file.ini               # Main configuration file used by the app
+├── controller
+│   ├── product_controller.go     # Handles product-related HTTP requests
+│   └── user_controller.go        # Handles user-related HTTP requests
+├── db
+│   ├── conn.go                   # PostgreSQL database connection logic
+│   └── redis.go                  # Redis client setup and cache utility functions
+├── docker-compose.yml            # Docker Compose configuration for PostgreSQL and Redis
+├── docs
+│   ├── docs.go                   # Auto-generated Swagger documentation
+│   ├── swagger.json              # Swagger JSON output
+│   └── swagger.yaml              # Swagger YAML output
+├── go.mod                        # Go module definition
+├── go.sum                        # Go module dependencies checksums
+├── makefile                      # Simplified CLI commands for build, run, and docs
+├── model
+│   ├── product.go                # Product data structure
+│   └── user.go                   # User data structure
+├── README.md                     # Project documentation
+├── repository
+│   ├── product_repository.go     # Data access layer for product entity
+│   └── user_repository.go        # Data access layer for user entity
+├── router
+│   ├── api.go                    # Initializes route groups
+│   └── routes.go                 # Defines all available routes
+└── usecase
+    ├── product_usecase.go        # Business logic for product operations
+    └── user_usecase.go           # Business logic for user operations
 
 ```
 ---
