@@ -104,11 +104,16 @@ expiration = 10
 ## 🐳 Running with Docker Compose
 Currently, the docker-compose.yml starts PostgreSQL and Redis container.
 
-### 1. Start the services
+### 2. Build Docker image
 ```bash
-docker-compose up
+docker build -t gin-boilerplate .
 ```
-### 2. PostgreSQL access
+
+### 2. Start the services
+```bash
+docker compose up
+```
+### 3. PostgreSQL access
 Configure the database by inserting your credentials into compose:
 - Host
 - Port
@@ -116,14 +121,14 @@ Configure the database by inserting your credentials into compose:
 - Password
 - Database
 
-### 3. Redis access
+### 4. Redis access
 Configure the database by inserting your credentials into compose:
 - Host
 - Db
 - Password
 - Expiration (in minutes)
 
-### 4. Setting up a demo database
+### 5. Setting up a demo database
 If you want to test the model and API, run the script:
 ```sql
 create table product (
